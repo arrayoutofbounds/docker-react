@@ -16,6 +16,11 @@ RUN yarn run build
 
 FROM nginx
 
+# just tells the developer that this container needs to be port 
+# mapped to port 80. However, beanstalk looks at it and knows that 
+# it has to map all requests to this port automatically.
+EXPOSE 80 
+
 # copy from builder phase
 COPY --from=builder /app/build /usr/share/nginx/html
 
